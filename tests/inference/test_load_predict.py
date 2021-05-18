@@ -27,7 +27,7 @@ from ml_project.inference import (
 def params(tmpdir: LocalPath, numerical_features_yes: List[str]):
 
     expected_transformer_path = tmpdir.join("transformer.pkl")
-    expected_model_path = tmpdir.join("model.pkl")
+    expected_model_path = tmpdir.join("models.pkl")
     expected_result_data_path = tmpdir.join("result.csv")
 
     params = Params(

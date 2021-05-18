@@ -25,7 +25,7 @@ def params(
     features_to_drop_no: Optional[str],
 ):
 
-    expected_output_model_path = tmpdir.join("model.pkl")
+    expected_output_model_path = tmpdir.join("models.pkl")
     expected_metric_path = tmpdir.join("metrics.json")
     expected_features_transformer_path = tmpdir.join("features_transformer.pkl")
 

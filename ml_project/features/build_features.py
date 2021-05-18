@@ -13,6 +13,7 @@ from ml_project.enities.feature_params import FeatureParams
 class Features_transformer(object):
 
     def __init__(self, params: FeatureParams):
+        self.transformer_was_fitted = False
         self.params = params
         if (params.categorical_features is not None) and (params.numerical_features is not None):
             transformer = ColumnTransformer(
@@ -115,14 +116,18 @@ class Features_transformer(object):
     def fit(self, df: pd.DataFrame):
         df = self.check_input_df(df)
         self.transformer.fit(df)
+        self.transformer_was_fitted = True
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
+        if not self.transformer_was_fitted:
+            raise NotImplementedError("First you need fit transformer")
         df = self.check_input_df(df)
         return pd.DataFrame(self.transformer.transform(df))
 
     def fit_transform(self, df: pd.DataFrame) -> pd.DataFrame:
         df = self.check_input_df(df)
         self.transformer.fit(df)
+        self.transformer_was_fitted = True
         return pd.DataFrame(self.transformer.transform(df))
 
 

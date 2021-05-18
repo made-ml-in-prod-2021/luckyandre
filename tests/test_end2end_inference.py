@@ -19,7 +19,7 @@ from ml_project.enities import (
 def params(tmpdir: LocalPath, numerical_features_yes: List[str], target_col: str):
 
     expected_train_data_path = tmpdir.join("train.csv")
-    expected_model_path = tmpdir.join("model.pkl")
+    expected_model_path = tmpdir.join("models.pkl")
     expected_metric_path = tmpdir.join("metrics.json")
     expected_transformer_path = tmpdir.join("transformer.pkl")
     expected_source_data_path = tmpdir.join("source.csv")

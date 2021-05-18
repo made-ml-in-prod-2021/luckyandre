@@ -1,3 +1,10 @@
+Код для запуска
+<br />- установка: python setup.py install
+<br />- тестирование: pytest tests
+<br />- отчет: python reports/report.py configs/config.yaml
+<br />- обучение: python ml_project/train_pipeline.py configs/config.yaml
+<br />- предсказание: python ml_project/inference_pipeline.py configs/config.yaml
+
 Структура проекта основана на коде ml_example проекта семинара. Основные отличия:
 <br />- код проекта позволяет решать задачу классификации 
 <br />- формируется отчет по анализу входных данных
@@ -22,7 +29,6 @@
 <br />- скорректировать конфигурационный файл configs/config.yaml (при необходимости)
 <br />- выполнить команду python ml_project/inference_pipeline.py configs/config.yaml
 <br />- сформированный прогноз будет расположен по адресу data/inference/result_data.csv
-
 
 Общая оценка = 32
 

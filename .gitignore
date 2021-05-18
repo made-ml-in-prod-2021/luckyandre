@@ -23,8 +23,8 @@ env*/
 # My temp folders, files
 temp/
 ml_project.egg-info/
-
-
+build/
+dist/
 
 
 

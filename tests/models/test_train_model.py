@@ -48,7 +48,7 @@ def test_train_model(features_and_target: Tuple[pd.DataFrame, pd.Series]):
 
 
 def test_serialize_model(tmpdir: LocalPath):
-    expected_output = tmpdir.join("model.pkl")
+    expected_output = tmpdir.join("models.pkl")
     n_estimators = 10
     model = RandomForestClassifier(n_estimators=n_estimators)
     real_output = serialize_model(model, expected_output)
