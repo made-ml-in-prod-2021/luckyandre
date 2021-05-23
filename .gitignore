@@ -1,0 +1,46 @@
+syntax glob
+
+#IDE related files
+.idea
+*.iml
+
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# Environments
+venv*/
+env*/
+
+
+# Misc
+.ipynb_checkpoints
+
+
+# My temp folders, files
+temp/
+ml_project.egg-info/
+build/
+dist/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+__pycache__/
+.idea/
+.ipynb_checkpoints/
+temp/
