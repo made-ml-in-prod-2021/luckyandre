@@ -1,5 +1,5 @@
 Код для запуска
-<br />- установка: python setup.py install
+<br />- установка: pip install -e .
 <br />- тестирование: pytest tests
 <br />- отчет: python reports/report.py configs/config.yaml
 <br />- обучение: python ml_project/train_pipeline.py configs/config.yaml

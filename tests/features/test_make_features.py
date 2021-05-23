@@ -4,7 +4,7 @@ import pandas as pd
 import pytest
 from numpy.testing import assert_allclose
 
-from ml_project.enities.feature_params import FeatureParams
+from ml_project.entities.feature_params import FeatureParams
 from ml_project.features.build_features import make_features, extract_target, Features_transformer
 from tests.synthetic_data_generator import (
     synthetic_numeric_data_generator,

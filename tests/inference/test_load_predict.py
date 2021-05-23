@@ -11,7 +11,7 @@ from ml_project.features import (
     Features_transformer,
     serialize_features_transformer
 )
-from ml_project.enities import (
+from ml_project.entities import (
     Params,
     FeatureParams,
     InferenceParams,

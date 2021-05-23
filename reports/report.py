@@ -5,7 +5,7 @@ import click
 import pandas as pd
 from pandas_profiling import ProfileReport
 
-from ml_project.enities import (
+from ml_project.entities import (
     Params,
     read_params
 )

@@ -6,7 +6,7 @@ import pytest
 from tests.synthetic_data_generator import synthetic_numeric_data_generator
 from ml_project.train_pipeline import train_pipeline
 from ml_project.inference_pipeline import inference_pipeline
-from ml_project.enities import (
+from ml_project.entities import (
     Params,
     SplittingParams,
     TrainingParams,

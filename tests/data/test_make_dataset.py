@@ -1,7 +1,7 @@
 from numpy.testing import assert_allclose
 
 from ml_project.data.make_dataset import read_data, split_train_val_data
-from ml_project.enities import SplittingParams
+from ml_project.entities import SplittingParams
 from tests.synthetic_data_generator import synthetic_numeric_data_generator
 
 

@@ -7,7 +7,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OrdinalEncoder
 
-from ml_project.enities.feature_params import FeatureParams
+from ml_project.entities.feature_params import FeatureParams
 
 
 class Features_transformer(object):
