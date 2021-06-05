@@ -22,7 +22,8 @@
 7|2
 8|1
 9|1
-Общий балл 19
+Общий балл|19
 
-*Валидация типов данных, последовательности колонок: была ранее реализована в трансформере: см ml_project -> features -> build_features.py -> Features_transformer.check_input_df.
-Валидация формирования датафрейма: см. endpoint "predict/" с использованием HTTPException
+
+<br> *Валидация типов данных, последовательности колонок: была ранее реализована в трансформере: см ml_project -> features -> build_features.py -> Features_transformer.check_input_df.
+<br> Валидация формирования датафрейма: см. endpoint "predict/" с использованием HTTPException
