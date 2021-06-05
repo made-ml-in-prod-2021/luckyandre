@@ -22,25 +22,6 @@ env*/
 
 # My temp folders, files
 temp/
-ml_project.egg-info/
+online_inference.egg-info
 build/
 dist/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-__pycache__/
-.idea/
-.ipynb_checkpoints/
-temp/
