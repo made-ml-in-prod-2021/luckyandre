@@ -1,3 +1,5 @@
+import pickle
+
 import numpy as np
 import pandas as pd
 from sklearn.compose import ColumnTransformer
@@ -5,7 +7,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OrdinalEncoder
 
-from online_inference.utils.feature_params import FeatureParams
+from ml_project.entities.feature_params import FeatureParams
 
 
 class Features_transformer(object):
@@ -131,3 +133,14 @@ class Features_transformer(object):
 
 def make_features(transformer: Features_transformer, df: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(transformer.transform(df))
+
+
+def extract_target(df: pd.DataFrame, params: FeatureParams) -> pd.Series:
+    target = df[params.target_col]
+    return target
+
+
+def serialize_features_transformer(transformer: Features_transformer, output: str) -> str:
+    with open(output, "wb") as f:
+        pickle.dump(transformer, f)
+    return output

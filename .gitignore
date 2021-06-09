@@ -22,6 +22,6 @@ env*/
 
 # My temp folders, files
 temp/
-online_inference.egg-info
+ml_project.egg-info
 build/
 dist/

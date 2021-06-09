@@ -9,8 +9,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 import pandas as pd
 
-from online_inference.utils.features_transformer import Features_transformer, make_features
-from online_inference.utils.loader import load_object
+from ml_project.features import Features_transformer, make_features
+from ml_project.inference import load_model, load_transformer
 
 
 logger = logging.getLogger(__name__)
@@ -52,8 +52,8 @@ def load_model_and_transformer():
         logger.error(err)
         raise RuntimeError(err)
 
-    model = load_object(model_path)
-    transformer = load_object(transformer_path)
+    model = load_model(model_path)
+    transformer = load_transformer(transformer_path)
 
 
 @app.get("/")

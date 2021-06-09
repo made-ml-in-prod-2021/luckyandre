@@ -1,7 +1,7 @@
 import numpy as np
 import requests
 
-from tests.synthetic_data_generator import synthetic_numeric_data_generator
+from ml_project.synthetic_data_generator import synthetic_numeric_data_generator
 
 
 if __name__ == "__main__":

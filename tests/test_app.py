@@ -4,10 +4,10 @@ from sklearn.ensemble import RandomForestClassifier
 import numpy as np
 
 from online_inference.app import app
-from online_inference.utils.features_transformer import Features_transformer
-from online_inference.utils.feature_params import FeatureParams
+from ml_project.features import Features_transformer
+from ml_project.entities import FeatureParams
 
-from synthetic_data_generator import synthetic_numeric_data_generator
+from ml_project.synthetic_data_generator import synthetic_numeric_data_generator
 
 
 client = TestClient(app)
@@ -21,7 +21,10 @@ transformer = Features_transformer(
     FeatureParams(
         numerical_features=[
             "age", "sex", "cp", "trestbps", "chol", "fbs", "restecg", "thalach", "exang", "oldpeak", "slope", "ca", "thal"
-        ]
+        ],
+        categorical_features=None,
+        features_to_drop=None,
+        target_col=None
     )
 )
 transformer.fit(synthetic_data.drop(columns=['target']))

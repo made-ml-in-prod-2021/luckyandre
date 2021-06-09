@@ -1,29 +1,55 @@
-Репозиторий содержит код для запуска web сервиса, решающего задачу классификации.
+Код для запуска
+<br />- установка: pip install -e .
+<br />- тестирование: pytest tests
+<br />- отчет: python reports/report.py configs/config.yaml
+<br />- обучение: python ml_project/train_pipeline.py configs/config.yaml
+<br />- предсказание: python ml_project/inference_pipeline.py configs/config.yaml
 
-Запуск сервиса из репозитория:
-<br> - установка зависимостей: pip install -e.
-<br> - тест: pytest tests/test_app.py
-<br> - запуск сервиса: cd online_inference; FEATURES_TRANSFORMER_PATH="features_transformer/features_transformer.pkl" MODEL_PATH="model/model.pkl" uvicorn app:app
-<br> - отправка запросов: python make_request.py
+Структура проекта основана на коде ml_example проекта семинара. Основные отличия:
+<br />- код проекта позволяет решать задачу классификации 
+<br />- формируется отчет по анализу входных данных
+<br />- реализован кастомный трансформер, который может обрабатывать числовые и категориальные фичи
+<br />- добавлен пайплайн формирования прогноза
+<br />- реализована генерация тестовых данных 
+<br />- написаны модульные и сквозные тесты
 
-Запуск сервиса из контейнера:
-<br> - скачать: docker pull andrebelenko/made_prod_web_service_hw2
-<br> - запустить: docker run --expose=8000 -p 8000:8000 andrebelenko/made_prod_web_service_hw2
-<br> - протестировать: python make_request.py
+Для формирования отчета по анализу входных данных нужно:
+<br />- положить данные в папку data/raw/train.csv
+<br />- python reports/report.py configs/config.yaml
+<br />- отчет будет сохранен в папке reports
+
+Для обучения модели нужно:
+<br />- положить данные для обучения в папку data/raw/train.csv
+<br />- скорректировать конфигурационный файл configs/config.yaml (при необходимости)
+<br />- выполнить команду python ml_project/train_pipeline.py configs/config.yaml
+<br />- результаты выполнения программы: трансформер, модель, метрики - будут расположены в соответствующих папках, определенных в конфигурационном файле
+
+Для формирования прогноза нужно:
+<br />- положить данные в папку data/inference/source_data.csv
+<br />- скорректировать конфигурационный файл configs/config.yaml (при необходимости)
+<br />- выполнить команду python ml_project/inference_pipeline.py configs/config.yaml
+<br />- сформированный прогноз будет расположен по адресу data/inference/result_data.csv
+
+Общая оценка = 32
 
 Задание|Оценка
 --- | --- 
-1|3
-2|3
+-2|1
+-1|0
+0|2
+1|2 + 1
+2|2
 3|2
-4|3*
-5|4
-6|0
-7|2
-8|1
-9|1
-Общий балл|19
+4|3
+5|3
+6|3
+7|3
+8|3
+9|3
+10|3
+11|0
+12|0
+13|1
 
 
-<br> *Валидация типов данных, последовательности колонок: была ранее реализована в трансформере: см ml_project -> features -> build_features.py -> Features_transformer.check_input_df.
-<br> Валидация формирования датафрейма: см. endpoint "predict/" с использованием HTTPException
+
