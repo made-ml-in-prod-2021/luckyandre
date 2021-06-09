@@ -3,7 +3,7 @@ version: '3.7'
 x-environment: &airflow_environment
   - AIRFLOW__CORE__EXECUTOR=LocalExecutor
   - AIRFLOW__CORE__LOAD_DEFAULT_CONNECTIONS=False
-  - AIRFLOW__CORE__LOAD_EXAMPLES=True
+  - AIRFLOW__CORE__LOAD_EXAMPLES=False
   - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql://airflow:airflow@postgres:5432/airflow
   - AIRFLOW__CORE__STORE_DAG_CODE=True
   - AIRFLOW__CORE__STORE_SERIALIZED_DAGS=True
@@ -21,9 +21,10 @@ services:
       - POSTGRES_PASSWORD=airflow
       - POSTGRES_DB=airflow
     ports:
-      - "5432:5432" # аналог команды docker run -p - "5432:5432"
+      - "5432:5432"
 
-  init: # скрипт инит: запустить базу, создать пользователя
+
+  init:
     build:
       context: images/airflow-docker
       args:
@@ -34,6 +35,7 @@ services:
     environment: *airflow_environment
     entrypoint: /bin/bash
     command: -c 'airflow db init && airflow users create --username admin --password admin --firstname Anonymous --lastname Admin --role Admin --email admin@example.org'
+
 
   webserver:
     build:
@@ -51,46 +53,46 @@ services:
     environment: *airflow_environment
     command: webserver
 
+
   scheduler:
     build:
-      context: images/airflow-docker # путь до папки с докер файлом
+      context: images/airflow-docker
       args:
         AIRFLOW_BASE_IMAGE: *airflow_image
     image: airflow-docker
     restart: always
-    depends_on: # запустить после успешного запуска postgres
+    depends_on:
       - postgres
     volumes:
       - logs:/opt/airflow/logs
-#      - ./dags/:/opt/airflow/dags/
-#      - ./data/:/opt/airflow/data/
+      - ./dags/:/opt/airflow/dags/
       - /var/run/docker.sock:/var/run/docker.sock
     environment: *airflow_environment
-    command: scheduler # то, что будет запущено внутри докер файла (подмена CMD scheduler)
+    command: scheduler
 
-  ml_base:
-    build:
-      context: images/airflow-ml-base
-    image: airflow-ml-base
-    restart: "no"
-
-  predict:
-    build:
-      context: images/airflow-predict
-    image: airflow-predict
-    restart: "no"
-
-  download:
-    build:
-      context: images/airflow-download
-    image: airflow-download
-    restart: "no"
-
-  preprocess:
-    build:
-      context: images/airflow-preprocess
-    image: airflow-preprocess
-    restart: "no"
+#  ml_base:
+#    build:
+#      context: images/airflow-ml-base
+#    image: airflow-ml-base
+#    restart: "no"
+#
+#  predict:
+#    build:
+#      context: images/airflow-predict
+#    image: airflow-predict
+#    restart: "no"
+#
+#  download:
+#    build:
+#      context: images/airflow-generate-data
+#    image: airflow-generate-data
+#    restart: "no"
+#
+#  preprocess:
+#    build:
+#      context: images/airflow-preprocess
+#    image: airflow-preprocess
+#    restart: "no"
 
 volumes:
   logs:

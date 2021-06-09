@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 
-def synthetic_numeric_data_generator(rand_state: int, size: int) -> pd.DataFrame:
+def synthetic_numeric_data_generator(rand_state: int = 7, size: int = 1000) -> pd.DataFrame:
     np.random.seed(rand_state)
     df = pd.DataFrame()
     df["age"] = np.random.normal(loc=50, scale=10, size=size)
