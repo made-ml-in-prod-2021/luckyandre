@@ -7,7 +7,7 @@ from ml_project.data import (
     read_data,
     split_train_val_data
 )
-from ml_project.enities import (
+from ml_project.entities import (
     Params,
     read_params
 )

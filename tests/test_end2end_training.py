@@ -4,9 +4,9 @@ from py._path.local import LocalPath
 import pytest
 from typing import Optional, List
 
-from tests.synthetic_data_generator import synthetic_numeric_data_generator
+from ml_project.synthetic_data_generator import synthetic_numeric_data_generator
 from ml_project.train_pipeline import train_pipeline
-from ml_project.enities import (
+from ml_project.entities import (
     Params,
     SplittingParams,
     FeatureParams,

@@ -5,7 +5,7 @@ import click
 from ml_project.data import read_data
 from ml_project.features import make_features
 from ml_project.models import predict_model
-from ml_project.enities import (
+from ml_project.entities import (
     Params,
     read_params
 )

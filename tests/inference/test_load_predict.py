@@ -5,13 +5,13 @@ import numpy as np
 import pytest
 from sklearn.ensemble import RandomForestClassifier
 
-from tests.synthetic_data_generator import synthetic_numeric_data_generator
+from ml_project.synthetic_data_generator import synthetic_numeric_data_generator
 from ml_project.models import serialize_model
 from ml_project.features import (
     Features_transformer,
     serialize_features_transformer
 )
-from ml_project.enities import (
+from ml_project.entities import (
     Params,
     FeatureParams,
     InferenceParams,

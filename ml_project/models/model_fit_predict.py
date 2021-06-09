@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, roc_auc_score
 
-from ml_project.enities.train_params import TrainingParams
+from ml_project.entities.train_params import TrainingParams
 
 SklearnClassificationModel = Union[RandomForestClassifier, LogisticRegression]  # used for function signature definition
 

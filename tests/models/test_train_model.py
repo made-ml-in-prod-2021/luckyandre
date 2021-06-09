@@ -7,11 +7,11 @@ import pytest
 from py._path.local import LocalPath
 from sklearn.ensemble import RandomForestClassifier
 
-from ml_project.enities import TrainingParams
-from ml_project.enities.feature_params import FeatureParams
+from ml_project.entities import TrainingParams
+from ml_project.entities.feature_params import FeatureParams
 from ml_project.features.build_features import make_features, extract_target, Features_transformer
 from ml_project.models.model_fit_predict import train_model, serialize_model
-from tests.synthetic_data_generator import synthetic_numeric_data_generator
+from ml_project.synthetic_data_generator import synthetic_numeric_data_generator
 
 
 @pytest.fixture
