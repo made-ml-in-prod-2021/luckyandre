@@ -85,6 +85,20 @@ services:
     restart: "no"
 
 
+  train_preprocess:
+    build:
+      context: images/airflow-train-preprocess
+    image: airflow-train-preprocess
+    restart: "no"
+
+
+  train_split:
+    build:
+      context: images/airflow-train-split
+    image: airflow-train-split
+    restart: "no"
+
+
 #  predict:
 #    build:
 #      context: images/airflow-predict
@@ -94,8 +108,8 @@ services:
 #
 #  preprocess:
 #    build:
-#      context: images/airflow-preprocess
-#    image: airflow-preprocess
+#      context: images/airflow-train-model
+#    image: airflow-train-model
 #    restart: "no"
 
 

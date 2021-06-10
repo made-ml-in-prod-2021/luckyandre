@@ -14,7 +14,7 @@ default_args = {
 }
 
 with DAG(
-        "1_dag_generate_data",
+        dag_id="1_dag_generate_data",
         default_args=default_args,
         schedule_interval="@daily",
         start_date=days_ago(5),
