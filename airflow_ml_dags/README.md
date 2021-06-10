@@ -1,5 +1,4 @@
-Я еще не завершил задание.
-Отправьте, пожалуйста, мое решение на доработку.
+Не успел добавить тесты (они практически готовы), поэтому отправьте, пожалуйста, мое решение на доработку и я добавлю финальную часть.
 
 export FERNET_KEY=$(python -c "from cryptography.fernet import Fernet; FERNET_KEY = Fernet.generate_key().decode(); print(FERNET_KEY)")
 
