@@ -1,5 +1,5 @@
 FROM airflow-ml-base:latest
 
-COPY preprocess.py /preprocess.py
+COPY model.py /model.py
 
-ENTRYPOINT ["python", "preprocess.py"]
+ENTRYPOINT ["python", "model.py"]

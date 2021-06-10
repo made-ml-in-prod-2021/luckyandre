@@ -38,9 +38,22 @@ with DAG(
         volumes=["/Users/a18648975/Desktop/HW3/airflow_ml_dags/data/:/data"] # TODO check this path
     )
 
+    train = DockerOperator(
+        task_id="docker-airflow-train-model",
+        image="airflow-train-model",
+        command="--data_dir /data/preprocessed/{{ ds }} --model_dir /data/model/{{ ds }}",
+        network_mode="bridge",
+        do_xcom_push=False,
+        volumes=["/Users/a18648975/Desktop/HW3/airflow_ml_dags/data/:/data"] # TODO check this path
+    )
 
-    train = DummyOperator(task_id="train")
-    validation = DummyOperator(task_id="validation")
+    validate = DockerOperator(
+        task_id="docker-airflow-train-validate",
+        image="airflow-train-validate",
+        command="--data_dir /data/preprocessed/{{ ds }} --model_dir /data/model/{{ ds }}",
+        network_mode="bridge",
+        do_xcom_push=False,
+        volumes=["/Users/a18648975/Desktop/HW3/airflow_ml_dags/data/:/data"] # TODO check this path
+    )
 
-
-    preprocess >> split >> train >> validation
+    preprocess >> split >> train >> validate

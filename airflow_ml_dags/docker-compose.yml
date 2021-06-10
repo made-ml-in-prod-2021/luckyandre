@@ -99,18 +99,18 @@ services:
     restart: "no"
 
 
-#  predict:
-#    build:
-#      context: images/airflow-predict
-#    image: airflow-predict
-#    restart: "no"
-#
-#
-#  preprocess:
-#    build:
-#      context: images/airflow-train-model
-#    image: airflow-train-model
-#    restart: "no"
+  train_model:
+    build:
+      context: images/airflow-train-model
+    image: airflow-train-model
+    restart: "no"
+
+
+  train_validate:
+    build:
+      context: images/airflow-train-validate
+    image: airflow-train-validate
+    restart: "no"
 
 
 volumes:
