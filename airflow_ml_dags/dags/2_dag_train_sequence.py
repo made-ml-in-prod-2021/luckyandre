@@ -14,7 +14,7 @@ def _wait_for_file(folder_name: str):
 
 default_args = {
     "owner": "airflow",
-    "email": ["airflow@example.com"],
+    "email": ["spb-312@yandex.ru"],
     "retries": 1,
     "retry_delay": timedelta(minutes=1),
 }

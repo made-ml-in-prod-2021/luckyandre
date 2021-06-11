@@ -10,3 +10,11 @@ Homework2 (Docker, web service):
 <br> - запустить: docker run --expose=8000 -p 8000:8000 andrebelenko/made_prod_web_service_hw2
 <br> - отправка запросов: python online_inference/make_request.py
 
+Homework3 (Airflow):
+<br> запуск:
+<br> export FERNET_KEY=$(python -c "from cryptography.fernet import Fernet; FERNET_KEY = Fernet.generate_key().decode(); print(FERNET_KEY)")
+<br> docker compose -f airflow_ml_dags/docker-compose.yml up --build --remove-orphans
+<br> необходимо установить переменные airflow (Admin -> Variables), например:
+<br> data_folder_path = '/Users/a18648975/Desktop/HW3/airflow_ml_dags/data'
+<br> model_folder_name = '2021-06-06'
+

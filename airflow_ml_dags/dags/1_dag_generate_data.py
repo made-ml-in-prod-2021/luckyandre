@@ -9,7 +9,7 @@ from airflow.models import Variable
 
 default_args = {
     "owner": "airflow",
-    "email": ["airflow@example.com"],
+    "email": ["spb-312@yandex.ru"],
     "retries": 1,
     "retry_delay": timedelta(minutes=1),
 }
