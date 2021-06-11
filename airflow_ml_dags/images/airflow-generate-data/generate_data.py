@@ -39,8 +39,8 @@ def generate(output_dir: str, random_state: int, size: int):
 
     # save
     os.makedirs(output_dir, exist_ok=True)
-    x.to_csv(os.path.join(output_dir, "data.csv"))
-    y.to_csv(os.path.join(output_dir, "target.csv"))
+    x.to_csv(os.path.join(output_dir, "data.csv"), index=False)
+    y.to_csv(os.path.join(output_dir, "target.csv"), index=False)
 
 
 if __name__ == '__main__':

@@ -4,6 +4,7 @@ from airflow import DAG
 from airflow.operators.dummy import DummyOperator
 from airflow.providers.docker.operators.docker import DockerOperator
 from airflow.utils.dates import days_ago
+from airflow.models import Variable
 
 
 default_args = {
@@ -27,7 +28,7 @@ with DAG(
         command="--size=1000 --random_state={{ ds_nodash }} --output_dir=/data/raw/{{ ds }}",
         network_mode="bridge",
         do_xcom_push=False,
-        volumes=["/Users/a18648975/Desktop/HW3/airflow_ml_dags/data/:/data"] # TODO check this path
+        volumes=[f"{Variable.get('data_folder_path')}:/data"]
     )
 
     start >> generate

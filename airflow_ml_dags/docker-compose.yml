@@ -66,6 +66,7 @@ services:
     volumes:
       - logs:/opt/airflow/logs
       - ./dags/:/opt/airflow/dags/
+      - ./data/:/opt/airflow/data/
       - /var/run/docker.sock:/var/run/docker.sock
     environment: *airflow_environment
     command: scheduler
@@ -110,6 +111,13 @@ services:
     build:
       context: images/airflow-train-validate
     image: airflow-train-validate
+    restart: "no"
+
+
+  inference_predict:
+    build:
+      context: images/airflow-inference-predict
+    image: airflow-inference-predict
     restart: "no"
 
 

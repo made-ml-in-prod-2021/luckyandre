@@ -10,8 +10,8 @@ from sklearn.model_selection import train_test_split
 def split(dir: str):
     data = pd.read_csv(os.path.join(dir, "preprocessed_data.csv"))
     x_train, x_test = train_test_split(data, test_size=0.3, random_state=7)
-    x_train.to_csv(os.path.join(dir, "train_data.csv"))
-    x_test.to_csv(os.path.join(dir, "test_data.csv"))
+    x_train.to_csv(os.path.join(dir, "train_data.csv"), index=False)
+    x_test.to_csv(os.path.join(dir, "test_data.csv"), index=False)
 
 
 if __name__ == '__main__':

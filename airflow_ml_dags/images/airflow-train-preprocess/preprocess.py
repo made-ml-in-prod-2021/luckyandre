@@ -6,17 +6,22 @@ import click
 @click.command()
 @click.option("--input_dir")
 @click.option("--output_dir")
-def preprocess(input_dir: str, output_dir):
+@click.option("--mode")
+def preprocess(input_dir: str, output_dir: str, mode: str):
     # read
     x = pd.read_csv(os.path.join(input_dir, "data.csv"))
-    y = pd.read_csv(os.path.join(input_dir, "target.csv"))
 
     # processing
-    x['target'] = y['target']
+    pass
 
     # store
     os.makedirs(output_dir, exist_ok=True)
-    x.to_csv(os.path.join(output_dir, "preprocessed_data.csv"))
+    if mode == 'train':
+        y = pd.read_csv(os.path.join(input_dir, "target.csv"))
+        x['target'] = y['target']
+        x.to_csv(os.path.join(output_dir, "preprocessed_data.csv"), index=False)
+    elif mode == 'inference':
+        x.to_csv(os.path.join(output_dir, "inference_data.csv"), index=False)
 
 
 if __name__ == '__main__':
