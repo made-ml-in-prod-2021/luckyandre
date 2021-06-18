@@ -16,8 +16,7 @@ setup(
         "pytest==6.2.4 ",
         "fastapi == 0.65.1",
         "uvicorn == 0.13.4",
-        "requests == 2.25.1"
-        # "dataclasses==0.6",
-        # "marshmallow==3.12.1",
+        "requests == 2.25.1",
+        "cryptography == 3.4.7"
     ]
 )

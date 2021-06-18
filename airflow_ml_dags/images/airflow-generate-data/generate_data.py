@@ -1,3 +1,6 @@
+import os
+
+import click
 import numpy as np
 import pandas as pd
 
@@ -24,16 +27,21 @@ def synthetic_numeric_data_generator(rand_state: int = 7, size: int = 1000) -> p
     return df
 
 
-def synthetic_categorical_data_generator(rand_state: int, size: int) -> pd.DataFrame:
-    np.random.seed(rand_state)
-    df = pd.DataFrame()
-    df['categorical'] = [chr(i) for i in np.random.randint(low=ord('A'), high=ord('z') + 1, size=size)]
-    df["target"] = np.random.randint(low=0, high=2, size=size)
-    return df
+@click.command()
+@click.option("--size", default=1000)
+@click.option("--random_state", default=7)
+@click.option("--output_dir")
+def generate(output_dir: str, random_state: int, size: int):
+    # data
+    df = synthetic_numeric_data_generator(random_state, size)
+    y = df['target']
+    x = df.drop(columns=['target'])
+
+    # save
+    os.makedirs(output_dir, exist_ok=True)
+    x.to_csv(os.path.join(output_dir, "data.csv"), index=False)
+    y.to_csv(os.path.join(output_dir, "target.csv"), index=False)
 
 
-def synthetic_numeric_and_categorical_data_generator(rand_state: int, size: int) -> pd.DataFrame:
-    np.random.seed(rand_state)
-    df = synthetic_numeric_data_generator(rand_state, size)
-    df['categorical'] = [chr(i) for i in np.random.randint(low=ord('A'), high=ord('z') + 1, size=size)]
-    return df
+if __name__ == '__main__':
+    generate()

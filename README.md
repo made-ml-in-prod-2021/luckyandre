@@ -1,55 +1,20 @@
-Код для запуска
+Homework1 (pipeline):
 <br />- установка: pip install -e .
 <br />- тестирование: pytest tests
 <br />- отчет: python reports/report.py configs/config.yaml
 <br />- обучение: python ml_project/train_pipeline.py configs/config.yaml
 <br />- предсказание: python ml_project/inference_pipeline.py configs/config.yaml
 
-Структура проекта основана на коде ml_example проекта семинара. Основные отличия:
-<br />- код проекта позволяет решать задачу классификации 
-<br />- формируется отчет по анализу входных данных
-<br />- реализован кастомный трансформер, который может обрабатывать числовые и категориальные фичи
-<br />- добавлен пайплайн формирования прогноза
-<br />- реализована генерация тестовых данных 
-<br />- написаны модульные и сквозные тесты
+Homework2 (Docker, web service):
+<br> - скачать: docker pull andrebelenko/made_prod_web_service_hw2
+<br> - запустить: docker run --expose=8000 -p 8000:8000 andrebelenko/made_prod_web_service_hw2
+<br> - отправка запросов: python online_inference/make_request.py
 
-Для формирования отчета по анализу входных данных нужно:
-<br />- положить данные в папку data/raw/train.csv
-<br />- python reports/report.py configs/config.yaml
-<br />- отчет будет сохранен в папке reports
-
-Для обучения модели нужно:
-<br />- положить данные для обучения в папку data/raw/train.csv
-<br />- скорректировать конфигурационный файл configs/config.yaml (при необходимости)
-<br />- выполнить команду python ml_project/train_pipeline.py configs/config.yaml
-<br />- результаты выполнения программы: трансформер, модель, метрики - будут расположены в соответствующих папках, определенных в конфигурационном файле
-
-Для формирования прогноза нужно:
-<br />- положить данные в папку data/inference/source_data.csv
-<br />- скорректировать конфигурационный файл configs/config.yaml (при необходимости)
-<br />- выполнить команду python ml_project/inference_pipeline.py configs/config.yaml
-<br />- сформированный прогноз будет расположен по адресу data/inference/result_data.csv
-
-Общая оценка = 32
-
-Задание|Оценка
---- | --- 
--2|1
--1|0
-0|2
-1|2 + 1
-2|2
-3|2
-4|3
-5|3
-6|3
-7|3
-8|3
-9|3
-10|3
-11|0
-12|0
-13|1
-
-
+Homework3 (Airflow):
+<br> запуск:
+<br> export FERNET_KEY=$(python -c "from cryptography.fernet import Fernet; FERNET_KEY = Fernet.generate_key().decode(); print(FERNET_KEY)")
+<br> docker compose -f airflow_ml_dags/docker-compose.yml up --build --remove-orphans
+<br> необходимо установить переменные airflow (Admin -> Variables), например:
+<br> data_folder_path = '/Users/a18648975/Desktop/HW3/airflow_ml_dags/data'
+<br> model_folder_name = '2021-06-06'
 

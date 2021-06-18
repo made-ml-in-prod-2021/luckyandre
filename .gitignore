@@ -22,6 +22,7 @@ env*/
 
 # My temp folders, files
 temp/
+airflow_ml_dags/data/
 ml_project.egg-info
 build/
 dist/
